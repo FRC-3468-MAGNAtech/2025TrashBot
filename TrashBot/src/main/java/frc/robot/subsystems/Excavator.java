@@ -4,20 +4,18 @@
 
 package frc.robot.subsystems;
 
+import com.revrobotics.spark.SparkMax;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class Tank extends SubsystemBase {
- private Spa
- 
+public class Excavator extends SubsystemBase {
   
- }
-  
+  private SparkMax ExcavatorMotor;
 
-  public Tank() {}
+  public Excavator() {}
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
   }
 }
-
