@@ -4,20 +4,46 @@
 
 package frc.robot.subsystems;
 
+import java.io.ObjectInputFilter.Config;
+import java.lang.module.Configuration;
+
+import com.revrobotics.spark.SparkMax;
+import com.revrobotics.spark.SparkBase.PersistMode;
+import com.revrobotics.spark.SparkBase.ResetMode;
+import com.revrobotics.spark.SparkLowLevel.MotorType;
+import com.revrobotics.spark.config.SparkMaxConfig;
+
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants.TankConstants;
 
 public class Tank extends SubsystemBase {
- private Spa
- 
+ private SparkMax leftMotor; 
+ private SparkMax rightMotor;
+ DifferentialDrive driveTrain;
   
- }
+}
   
 
-  public Tank() {}
+public Tank() {
+  leftMotor = new SparkMax(TankConstants.leftMotorID, MotorType.kBrushless);
+  rightMotor = new SparkMax(TankConstants.rightMotorID, MotorType.kBrushless);
+
+  SparkMaxConfig config = new SparkMaxConfig();
+  leftMotor.configure(config, ResetMode.kNoResetSafeParameters, PersistMode.kNoPersistParameters);
+  rightMotor.configure(config, ResetMode.kNoResetSafeParameters, PersistMode.kNoPersistParameters);
+
+  driveTrain = new DifferentialDrive(leftMotor,rightMotor);
+
+}
+
+public void tankDrive(double speed,double rotation){
+  driveTrain.arcadeDrive(speed, rotation);
+}
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
   }
-}
+
 
