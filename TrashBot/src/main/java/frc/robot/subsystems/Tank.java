@@ -18,32 +18,30 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.TankConstants;
 
 public class Tank extends SubsystemBase {
- private SparkMax leftMotor; 
- private SparkMax rightMotor;
- DifferentialDrive driveTrain;
-  
-}
-  
+  private SparkMax leftMotor; 
+  private SparkMax rightMotor;
+  private DifferentialDrive driveTrain;
 
-public Tank() {
-  leftMotor = new SparkMax(TankConstants.leftMotorID, MotorType.kBrushless);
-  rightMotor = new SparkMax(TankConstants.rightMotorID, MotorType.kBrushless);
 
-  SparkMaxConfig config = new SparkMaxConfig();
-  leftMotor.configure(config, ResetMode.kNoResetSafeParameters, PersistMode.kNoPersistParameters);
-  rightMotor.configure(config, ResetMode.kNoResetSafeParameters, PersistMode.kNoPersistParameters);
+  public Tank() {
+    leftMotor = new SparkMax(TankConstants.leftMotorID, MotorType.kBrushless);
+    rightMotor = new SparkMax(TankConstants.rightMotorID, MotorType.kBrushless);
 
-  driveTrain = new DifferentialDrive(leftMotor,rightMotor);
+    SparkMaxConfig config = new SparkMaxConfig();
+    leftMotor.configure(config, ResetMode.kNoResetSafeParameters, PersistMode.kNoPersistParameters);
+    rightMotor.configure(config, ResetMode.kNoResetSafeParameters, PersistMode.kNoPersistParameters);
 
-}
+    driveTrain = new DifferentialDrive(leftMotor,rightMotor);
+  }
 
-public void tankDrive(double speed,double rotation){
-  driveTrain.arcadeDrive(speed, rotation);
-}
+  public void tankDrive(double speed,double rotation){
+    driveTrain.arcadeDrive(speed, rotation);
+  }
 
   @Override
   public void periodic() {
-    // This method will be called once per scheduler run
+
   }
+}
 
 
