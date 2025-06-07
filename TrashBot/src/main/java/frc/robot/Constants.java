@@ -22,8 +22,8 @@ public final class Constants {
     public static final double backwardMotor = -0.2;
   }
   public final class  TankConstants{
-    public static final int leftMotorID = 0;
-    public static final int rightMotorID = 0;
+    public static final int leftMotorID = 3;
+    public static final int rightMotorID = 4;
   
     
   }

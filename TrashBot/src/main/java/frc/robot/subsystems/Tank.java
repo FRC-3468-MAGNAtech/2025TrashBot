@@ -29,8 +29,11 @@ public class Tank extends SubsystemBase {
     rightMotor = new SparkMax(TankConstants.rightMotorID, MotorType.kBrushless);
 
     SparkMaxConfig config = new SparkMaxConfig();
+    SparkMaxConfig config2 = new SparkMaxConfig();
     config.idleMode(IdleMode.kCoast);
-    leftMotor.configure(config, ResetMode.kNoResetSafeParameters, PersistMode.kNoPersistParameters);
+    config2.idleMode(IdleMode.kCoast);
+    config2.inverted(true);
+    leftMotor.configure(config2, ResetMode.kNoResetSafeParameters, PersistMode.kNoPersistParameters);
     rightMotor.configure(config, ResetMode.kNoResetSafeParameters, PersistMode.kNoPersistParameters);
 
     driveTrain = new DifferentialDrive(leftMotor,rightMotor);
