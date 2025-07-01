@@ -16,4 +16,17 @@ public final class Constants {
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;
   }
+
+  public static class ExcavatorConstants {
+    publ
+    public static final int ExcavatorPort = 5;
+    public static final double ExcavatorUp = 0.3;
+    public static final double ExcavatorDown = -0.2;
+    public static final double ExcavatorStopSpeed = 0;
+
+  }
+
+  public static class HIDConstants {
+    public static final int topbuttonPad = 1;
+  }
 }
