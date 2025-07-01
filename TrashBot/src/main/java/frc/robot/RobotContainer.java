@@ -7,14 +7,15 @@ package frc.robot;
 import frc.robot.Constants.HIDConstants;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.ArcadeDrive;
+import frc.robot.commands.ExcavatorDown;
+import frc.robot.commands.ExcavatorUp;
+import frc.robot.subsystems.Excavator;
 import frc.robot.subsystems.Tank;
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj.Joystick;
-import frc.robot.commands.Autos;
-import frc.robot.commands.ExampleCommand;
-import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -25,15 +26,15 @@ import edu.wpi.first.wpilibj2.command.Command;
 public class RobotContainer {
 
 private Tank m_tank = new Tank();
+private Excavator m_Excavator = new Excavator();
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
-  private final CommandXboxController m_driverController =
-      new CommandXboxController(OperatorConstants.kDriverControllerPort);
-
+      private final Joystick driverController = new Joystick(1);
       //Button
       private final Joystick topbuttonPad =  new Joystick(HIDConstants.topbuttonPad);
       private final JoystickButton excaButtonUp = new  JoystickButton(topbuttonPad, 1);
       private final JoystickButton excaButtonDown = new  JoystickButton(topbuttonPad, 2);
+
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -42,16 +43,16 @@ private Tank m_tank = new Tank();
   }
 
   private void configureBindings() {
-    // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
-   
 
-    // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
-    // cancelling on release.
-    m_tank.setDefaultCommand(new ArcadeDrive(
-      m_tank, 
+  
+    m_tank.setDefaultCommand(new ArcadeDrive(m_tank, 
       () -> MathUtil.applyDeadband(driverController.getY(), 0.15), 
       () -> MathUtil.applyDeadband(driverController.getX(), 0.15)));
+
+    excaButtonUp.whileTrue(new ExcavatorUp(m_Excavator));
+    excaButtonDown.whileTrue(new ExcavatorDown(m_Excavator));
   }
+
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.

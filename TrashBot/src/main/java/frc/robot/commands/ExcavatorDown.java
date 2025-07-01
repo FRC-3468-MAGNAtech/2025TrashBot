@@ -8,11 +8,11 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Excavator;
 
 /* You should consider using the more terse Command factories API instead https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html#defining-commands */
-public class DiggerUp extends Command {
+public class ExcavatorDown extends Command {
   private Excavator Excavate;
  
   /** Creates a new DiggerUp. */
-  public DiggerUp(Excavator Subsystem) {
+  public ExcavatorDown(Excavator Subsystem) {
     Excavate = Subsystem;
     addRequirements(Excavate);
   }
@@ -24,7 +24,7 @@ public class DiggerUp extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Excavate.ExcavatorUp();
+    Excavate.ExcavatorDown();
   }
 
   // Called once the command ends or is interrupted.

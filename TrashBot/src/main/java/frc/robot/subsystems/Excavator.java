@@ -5,7 +5,11 @@
 package frc.robot.subsystems;
 
 import com.revrobotics.spark.SparkMax;
+import com.revrobotics.spark.SparkBase.PersistMode;
+import com.revrobotics.spark.SparkBase.ResetMode;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
+import com.revrobotics.spark.config.SparkMaxConfig;
+
 import frc.robot.Constants.ExcavatorConstants;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -15,6 +19,10 @@ public class Excavator extends SubsystemBase {
   /** Creates a new Excavator. */
   public Excavator() {
     m_Excavator = new SparkMax(ExcavatorConstants.ExcavatorPort, MotorType.kBrushless);
+
+    SparkMaxConfig config = new SparkMaxConfig();
+    config.inverted(false);
+    m_Excavator.configure(config, ResetMode.kNoResetSafeParameters, PersistMode.kNoPersistParameters);
   }
 
   public void ExcavatorUp() {
