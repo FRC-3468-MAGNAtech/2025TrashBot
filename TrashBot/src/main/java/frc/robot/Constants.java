@@ -18,7 +18,6 @@ public final class Constants {
   }
 
   public static class ExcavatorConstants {
-    publ
     public static final int ExcavatorPort = 5;
     public static final double ExcavatorUp = 0.3;
     public static final double ExcavatorDown = -0.2;
